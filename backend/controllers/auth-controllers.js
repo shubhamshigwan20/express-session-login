@@ -16,7 +16,7 @@ const login = async (req, res, next) => {
       .json({ status: false, message: "Invalid credentials!" });
   }
   req.session.userId = user.id;
-  res.json({ status: true, message: "Login Successful!" });
+  res.status(200).json({ status: true, message: "Login Successful!" });
 };
 
 const logout = async (req, res, next) => {
@@ -25,7 +25,7 @@ const logout = async (req, res, next) => {
       return res.status(500).json({ status: false, message: "Logout Fail!" });
     }
     res.clearCookie("connect.sid");
-    res.json({ status: true, message: "Logout Successful!" });
+    res.status(200).json({ status: true, message: "Logout Successful!" });
   });
 };
 

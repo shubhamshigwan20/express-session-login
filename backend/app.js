@@ -17,6 +17,8 @@ app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: "temporary-secret",
@@ -25,6 +27,7 @@ app.use(
     cookie: {
       secure: true, //for http , true when we use https
       httpOnly: true, //prevent client side js reading cookie
+      sameSite: "lax",
       maxAge: 1000 * 60 * 60 * 24, // 1day
     },
   }),

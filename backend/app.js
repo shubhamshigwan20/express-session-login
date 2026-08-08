@@ -23,7 +23,7 @@ app.use(
     resave: false,
     saveUninitialized: false, //dont create session until something is stored
     cookie: {
-      secure: false, //for http , true when we use https
+      secure: true, //for http , true when we use https
       httpOnly: true, //prevent client side js reading cookie
       maxAge: 1000 * 60 * 60 * 24, // 1day
     },

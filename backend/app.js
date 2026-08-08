@@ -27,7 +27,7 @@ app.use(
     cookie: {
       secure: true, //for http , true when we use https
       httpOnly: true, //prevent client side js reading cookie
-      sameSite: "lax",
+      sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24, // 1day
     },
   }),

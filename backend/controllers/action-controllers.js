@@ -8,7 +8,7 @@ const changeEmail = async (req, res, next) => {
       userId,
     ]);
     if (results.rowCount === 0) {
-      res.status(200).json({ status: false, message: "internal server error" });
+      return res.status(404).json({ status: false, message: "User not found" });
     }
     res
       .status(200)

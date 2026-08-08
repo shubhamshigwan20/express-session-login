@@ -11,12 +11,13 @@ const Dashboard = () => {
     setEmail(value);
   };
 
-  const submitEmail = () => {
+  const submitEmail = async () => {
     try {
       const payload = {
         email: userEmail,
       };
-      api.post("/change-email", payload);
+      const result = await api.post("/change-email", payload);
+      console.log(result);
     } catch (err) {
       console.log(err);
     }

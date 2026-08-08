@@ -5,13 +5,14 @@ const db = require("./db/db");
 const helmet = require("helmet");
 const errorMiddleware = require("./middleware/error-handler");
 const authRoutes = require("./routes/auth-routes");
+const actionRoutes = require("./routes/action-routes");
 const session = require("express-session");
 
 const app = express();
 const PORT = process.env.PORT || 80;
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -28,6 +29,7 @@ app.use(
   }),
 );
 app.use(authRoutes);
+app.use(actionRoutes);
 
 app.get("/", (req, res) => {
   res
